@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from './contactForm/contactForm';
-import ContactList from './ContactList/ContactList';
+// import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 import styles from 'components/App.module.css';
 
@@ -18,7 +18,7 @@ const App = () => {
     return parsedContacts ?? initialState;
   });
 
-  const [filterContact, setFilterContact] = useState('');
+  // const [filterContact, setFilterContact] = useState('');
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -41,21 +41,21 @@ const App = () => {
     ]);
   };
 
-  const handleChange = e => {
-    setFilterContact(e.target.value);
-  };
+  // const handleChange = e => {
+  //   setFilterContact(e.target.value);
+  // };
 
-  const handleDelete = itemId => {
-    setContacts(contacts.filter(el => el.id !== itemId));
-  };
+  // const handleDelete = itemId => {
+  //   setContacts(contacts.filter(el => el.id !== itemId));
+  // };
 
-  const handleFilter = e => {
-    return contacts.filter(contact =>
-      contact.name
-        .toLocaleLowerCase()
-        .includes(filterContact.toLocaleLowerCase())
-    );
-  };
+  // const handleFilter = e => {
+  //   return contacts.filter(contact =>
+  //     contact.name
+  //       .toLocaleLowerCase()
+  //       .includes(filterContact.toLocaleLowerCase())
+  //   );
+  // };
 
   return (
     <div className={styles.app}>
@@ -63,9 +63,14 @@ const App = () => {
       <ContactForm contacts={contacts} onSubmit={handleSubmit} />
 
       <h2>Contacts</h2>
-      <Filter onFilter={handleChange} filter={filterContact} />
+      <Filter
+      // onFilter={handleChange} filter={filterContact}
+      />
 
-      <ContactList onDelete={handleDelete} onFilter={handleFilter} />
+      {/* <ContactList
+        onDelete={handleDelete}
+        // onFilter={handleFilter}
+      /> */}
     </div>
   );
 };

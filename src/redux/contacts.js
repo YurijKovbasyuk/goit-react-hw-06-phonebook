@@ -14,19 +14,17 @@ export const contactSlice = createSlice({
   initialState,
   reducers: {
     setContacts: (state, action) => {
-      console.log(
-        'setContacts value',
-        state.value
-        // 'setContacts action',
-        // action.payload
-      );
+      console.log('setContacts value', state.value);
+      console.log(' action.payload', action.payload);
+
       state.value = [...state.value, action.payload];
     },
-    deleteContacts: (state, action) => {
-      console.log('delete', action);
-      state.contacts = state.contacts.filter(
-        contact => contact.id !== action.payload
-      );
+    deleteContacts: (state, { payload }) => {
+      console.log('payload', payload);
+      console.log('state', state);
+      console.log('state.contacts', state.contacts);
+
+      state.contacts = state.contacts.filter(contact => contact.id !== payload);
     },
   },
 });

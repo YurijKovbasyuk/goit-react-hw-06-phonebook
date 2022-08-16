@@ -1,21 +1,24 @@
 import styles from './ContactList.module.css';
 import Contact from '../Contact/Contact';
 // import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
-import { setContacts, deleteContacts } from '../../redux/contacts';
+import {
+  useSelector,
+  // useDispatch
+} from 'react-redux';
+// import { setContacts } from '../../redux/contacts';
 
 function ContactList() {
   const contacts = useSelector(state => state.contacts.value);
-  const valueFilter = useSelector(state => state.filter.value);
-  const dispatch = useDispatch();
-  const handleFilter = e => {
-    console.log('contact', contacts);
+  // const valueFilter = useSelector(state => state.filter.value);
+  // const dispatch = useDispatch();
+  // const handleFilter = e => {
+  //   console.log('contact', contacts);
 
-    dispatch(setContacts(e.target.value));
-    return contacts.filter(contact =>
-      valueFilter.name.toLocaleLowerCase().includes(contact.toLocaleLowerCase())
-    );
-  };
+  //   dispatch(setContacts(e.target.value));
+  //   return contacts.filter(contact =>
+  //     valueFilter.name.toLocaleLowerCase().includes(contact.toLocaleLowerCase())
+  //   );
+  // };
 
   // const handleFilter = e => {
   //   return contacts.filter(contact =>
@@ -36,7 +39,7 @@ function ContactList() {
           const { id, number, name } = contact;
           return (
             <Contact
-              onDelete={deleteContacts}
+              // onDelete={deleteContact}
               key={id}
               number={number}
               name={name}

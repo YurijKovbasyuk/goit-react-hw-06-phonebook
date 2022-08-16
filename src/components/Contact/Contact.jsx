@@ -21,7 +21,7 @@ function Contact({ id, number, name, onDelete }) {
         className={styles.button}
         // onClick={onDelete}
         onClick={() => {
-          deleteContact(id);
+          deleteContact();
         }}
       >
         Delete

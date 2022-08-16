@@ -12,9 +12,21 @@ function Filter() {
   const value = useSelector(state => state.filter.value);
   const dispatch = useDispatch();
   const handleChange = e => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     dispatch(setFilter(e.target.value));
   };
+
+  // const handleChange = e => {
+  //   setFilterContact(e.target.value);
+  // };
+
+  // const handleFilter = e => {
+  //   return contacts.filter(contact =>
+  //     contact.name
+  //       .toLocaleLowerCase()
+  //       .includes(filterContact.toLocaleLowerCase())
+  //   );
+  // };
 
   return (
     <Fragment>

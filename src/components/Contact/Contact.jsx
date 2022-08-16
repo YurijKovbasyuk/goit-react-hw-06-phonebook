@@ -1,12 +1,20 @@
 import styles from './Contact.module.css';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContacts } from '../../redux/contacts';
 
 function Contact({ id, number, name, onDelete }) {
+  // const contacts = useSelector(state => state.contacts.value);
+  // const handleDelete = itemId => {
+  //   deleteContacts(contacts.filter(el => el.id !== itemId));
+  // };
+
   return (
     <li className={styles.li}>
       {name + ': ' + number}
       <button
         className={styles.button}
+        // onClick={onDelete}
         onClick={() => {
           onDelete(id);
         }}

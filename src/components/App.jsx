@@ -40,12 +40,12 @@ const App = () => {
   //   ]);
   // };
 
-  // const handleChange = e => {
-  //   setFilterContact(e.target.value);
-  // };
-
   // const handleDelete = itemId => {
   //   setContacts(contacts.filter(el => el.id !== itemId));
+  // };
+
+  // const handleChange = e => {
+  //   setFilterContact(e.target.value);
   // };
 
   // const handleFilter = e => {

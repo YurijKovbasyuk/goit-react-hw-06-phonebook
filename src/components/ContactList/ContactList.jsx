@@ -11,11 +11,19 @@ function ContactList() {
   const handleFilter = e => {
     console.log('contact', contacts);
 
-    contacts.filter(contact =>
+    dispatch(setContacts(e.target.value));
+    return contacts.filter(contact =>
       valueFilter.name.toLocaleLowerCase().includes(contact.toLocaleLowerCase())
     );
-    dispatch(setContacts(e.target.value));
   };
+
+  // const handleFilter = e => {
+  //   return contacts.filter(contact =>
+  //     contact.name
+  //       .toLocaleLowerCase()
+  //       .includes(filterContact.toLocaleLowerCase())
+  //   );
+  // };
 
   //    = itemId => {
   //   setContacts(contacts.filter(el => el.id !== itemId));

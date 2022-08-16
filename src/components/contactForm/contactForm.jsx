@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import styles from './contactForm.module.css';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setContacts } from '../../redux/contacts';
 
 const ContactForm = () => {
@@ -15,6 +15,14 @@ const ContactForm = () => {
     let loginInputId = nanoid();
     // console.log(props);
     e.preventDefault();
+    const normalizedName = name.toLowerCase();
+    const checkedForName = contacts.some(
+      contact => normalizedName === contact.name.toLowerCase()
+    );
+
+    if (checkedForName) {
+      return alert(`${name} is already in contacts`);
+    }
     dispatch(setContacts({ id: loginInputId, name: name, number: number }));
     // name, number
     reset();
@@ -43,9 +51,9 @@ const ContactForm = () => {
   };
 
   const handleChange = e => {
-    console.log('handleChange', e.target.value);
+    // console.log('handleChange', e.target.value);
     const { value, name } = e.target;
-    console.log(value);
+    // console.log(value);
     switch (name) {
       case 'name':
         // dispatch(setContacts(e.target.value));

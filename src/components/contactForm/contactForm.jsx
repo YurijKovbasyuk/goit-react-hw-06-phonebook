@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import styles from './contactForm.module.css';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setContacts } from '../../redux/contacts';
 
@@ -13,7 +12,6 @@ const ContactForm = () => {
   const contacts = useSelector(state => state.contacts.value);
   const handleSubmit = e => {
     let loginInputId = nanoid();
-    // console.log(props);
     e.preventDefault();
     const normalizedName = name.toLowerCase();
     const checkedForName = contacts.some(
@@ -24,26 +22,9 @@ const ContactForm = () => {
       return alert(`${name} is already in contacts`);
     }
     dispatch(setContacts({ id: loginInputId, name: name, number: number }));
-    // name, number
+
     reset();
   };
-
-  // const handleSubmit = (name, number) => {
-  //   let loginInputId = nanoid();
-
-  //   const normalizedName = name.toLowerCase();
-  //   const checkedForName = contacts.some(
-  //     contact => normalizedName === contact.name.toLowerCase()
-  //   );
-
-  //   if (checkedForName) {
-  //     return alert(`${name} is already in contacts`);
-  //   }
-  //   setContacts(prevState => [
-  //     ...prevState,
-  //     { id: loginInputId, name: name, number: number },
-  //   ]);
-  // };
 
   const reset = () => {
     setName('');
@@ -51,16 +32,14 @@ const ContactForm = () => {
   };
 
   const handleChange = e => {
-    // console.log('handleChange', e.target.value);
     const { value, name } = e.target;
-    // console.log(value);
+
     switch (name) {
       case 'name':
-        // dispatch(setContacts(e.target.value));
         setName(value);
         break;
+
       case 'number':
-        // dispatch(setContacts(e.target.value));
         setNumber(value);
         break;
 
@@ -106,16 +85,6 @@ const ContactForm = () => {
       </form>
     </div>
   );
-};
-
-ContactForm.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

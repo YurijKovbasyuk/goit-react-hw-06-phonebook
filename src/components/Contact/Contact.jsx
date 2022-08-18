@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContacts } from '../../redux/contacts';
 
-function Contact({ id, number, name, onDelete }) {
-  // const contacts = useSelector(state => state.contacts.value);
+function Contact({ id, number, name }) {
   const dispatch = useDispatch();
 
-  // const contacts = useSelector(state => state.contacts.value);
-  // const handleDelete = itemId => {
-  //   deleteContacts(contacts.filter(el => el.id !== itemId));
-  // };
   const deleteContact = () => {
     dispatch(deleteContacts(id));
   };
@@ -19,7 +14,6 @@ function Contact({ id, number, name, onDelete }) {
       {name + ': ' + number}
       <button
         className={styles.button}
-        // onClick={onDelete}
         onClick={() => {
           deleteContact();
         }}
@@ -31,7 +25,6 @@ function Contact({ id, number, name, onDelete }) {
 }
 
 Contact.propTypes = {
-  onDelete: PropTypes.func.isRequired,
   number: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
